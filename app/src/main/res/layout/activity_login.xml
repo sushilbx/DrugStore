@@ -4,150 +4,87 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".LoginActivity">
 
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/mtAdminListToolBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FF018786"
-        app:contentInsetLeft="0dp"
-        app:titleTextColor="@color/white"
-        app:contentInsetStart="0dp"
-        app:contentInsetStartWithNavigation="0dp"
-        app:navigationIcon="@drawable/ic_back"
-        app:title="Login"
-        app:titleMargin="0dp" />
+
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="20dp">
-
-            <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/ic_drug_store_logo" />
-
-            <com.google.android.material.textfield.TextInputLayout
+            android:layout_height="wrap_content">
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/loginapp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:hint="Email"
-                app:boxBackgroundColor="@color/white"
-                app:boxBackgroundMode="outline"
-                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.LargeComponent">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:hint="Password"
-                app:boxBackgroundColor="@color/white"
-                app:boxBackgroundMode="outline"
-                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.LargeComponent">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.button.MaterialButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="25dp"
-                android:backgroundTint="#FF018786"
-                android:text="Login"
-                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:text="OR"
-                android:textStyle="bold" />
+                app:title="Login"
+                android:background="@color/teal_700"
+                app:menu="@menu/bottom_nav_menu"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/rounded_40dp"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:padding="10dp">
-
+                android:orientation="vertical"
+                android:padding="20dp">
 
                 <ImageView
-                    android:layout_width="33dp"
-                    android:layout_height="32dp"
-                    android:layout_marginLeft="20dp"
-                    android:src="@drawable/ic_icons8_gmail" />
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/ic_drug_store_logo" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/gmail"
-                    android:layout_width="wrap_content"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:letterSpacing="0"
-                    android:text="Continue with Gmail"
-                    android:layout_marginStart="10dp"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
+                    android:layout_gravity="center"
+                    android:layout_marginTop="40dp"
+                    android:hint="Email"
+                    app:boxBackgroundColor="@color/white"
+                    app:boxBackgroundMode="outline"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.LargeComponent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:hint="Password"
+                    app:boxBackgroundColor="@color/white"
+                    app:boxBackgroundMode="outline"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.LargeComponent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="40dp"
+                    android:backgroundTint="#FF018786"
+                    android:text="Login"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.MediumComponent" />
+
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/rounded_40dp"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:padding="10dp">
+        </RelativeLayout>
 
-
-                <ImageView
-                    android:layout_width="33dp"
-                    android:layout_height="32dp"
-                    android:layout_marginLeft="20dp"
-                    android:src="@drawable/ic_icons8_facebook" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/facebbok"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:letterSpacing="0"
-                    android:layout_marginStart="10dp"
-                    android:text="Continue with Facebook"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-        </LinearLayout>
     </ScrollView>
 
 
