@@ -21,7 +21,9 @@
                 android:id="@+id/loginapp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:navigationIcon="@drawable/ic_back"
                 app:title="Login"
+                app:titleTextColor="@color/white"
                 android:background="@color/teal_700"
                 app:menu="@menu/bottom_nav_menu"/>
 
@@ -94,8 +96,8 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:backgroundTint="#FF018786"
-                    android:textAllCaps="false"
                     android:text="Login with Google"
+                    android:textAllCaps="false"
                     app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.MediumComponent" />
 
                 <com.google.android.material.button.MaterialButton
@@ -104,8 +106,8 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:backgroundTint="#FF018786"
-                    android:textAllCaps="false"
                     android:text="Login with Gmail"
+                    android:textAllCaps="false"
                     app:icon="@drawable/ic_icons8_facebook"
                     app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.MediumComponent" />
 
