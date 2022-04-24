@@ -7,10 +7,6 @@
     android:background="@color/white"
     android:orientation="vertical"
     tools:context=".LoginActivity">
-
-
-
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -24,8 +20,7 @@
                 app:navigationIcon="@drawable/ic_back"
                 app:title="Login"
                 app:titleTextColor="@color/white"
-                android:background="@color/teal_700"
-                app:menu="@menu/bottom_nav_menu"/>
+                android:background="@color/teal_700" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -74,6 +69,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -83,6 +79,7 @@
                     app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.MediumComponent" />
 
                 <TextView
+                    android:id="@+id/tvOr"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
