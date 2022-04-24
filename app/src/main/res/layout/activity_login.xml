@@ -32,8 +32,8 @@
                 android:padding="20dp">
 
                 <ImageView
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
                     android:src="@drawable/ic_drug_store_logo" />
@@ -78,6 +78,35 @@
                     android:layout_marginTop="40dp"
                     android:backgroundTint="#FF018786"
                     android:text="Login"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.MediumComponent" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="OR"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="#FF018786"
+                    android:textAllCaps="false"
+                    android:text="Login with Google"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.MediumComponent" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="#FF018786"
+                    android:textAllCaps="false"
+                    android:text="Login with Gmail"
+                    app:icon="@drawable/ic_icons8_facebook"
                     app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.MediumComponent" />
 
 

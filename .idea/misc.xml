@@ -6,10 +6,11 @@
         <entry key="app/src/main/res/drawable/ic_back.xml" value="0.182" />
         <entry key="app/src/main/res/drawable/ic_drug_store_logo.xml" value="0.182" />
         <entry key="app/src/main/res/drawable/ic_facebook.xml" value="0.1875" />
+        <entry key="app/src/main/res/drawable/ic_icons8_facebook.xml" value="0.1875" />
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1875" />
         <entry key="app/src/main/res/drawable/rounded_40dp.xml" value="0.1875" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.33645833333333336" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33645833333333336" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.1" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.34791666666666665" />
