@@ -13,7 +13,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Button mbSignup = findViewById(R.id.mbCreateAccount);
+        Button mbSignup = findViewById(R.id.SignUpButton);
 
         mbSignup.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {

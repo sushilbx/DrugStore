@@ -21,6 +21,7 @@
             app:title="Home"
             app:titleTextColor="@color/white" />
         <Button
+            android:id="@+id/SignUpButton"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:text="Signup"

@@ -86,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         sessionManager.createLoginSession(sessionModel);
 
-                        Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
 
