@@ -2,7 +2,7 @@ package com.ottego.drugstore.model;
 
 public class SessionModel {
 
-    private String id;
+    public String id;
     private String name;
     private String mobile;
     private String email;
@@ -34,14 +34,6 @@ public class SessionModel {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getMobile() {
@@ -114,5 +106,13 @@ public class SessionModel {
 
     public void setApi_key(String api_key) {
         this.api_key = api_key;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 }

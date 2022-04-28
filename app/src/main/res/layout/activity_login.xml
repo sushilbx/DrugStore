@@ -86,22 +86,23 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="#FF018786"
+                app:icon="@drawable/ic_icons8_facebook"
                 android:text="Login with Google"
+                app:iconSize="24dp"
+                app:iconTint="@null"
                 android:textAllCaps="false"
                 app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.MediumComponent" />
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/mbCreateAccount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="#FF018786"
-                android:text="Login with Gmail"
+                android:text="Create New Account"
                 android:textAllCaps="false"
-                app:icon="@drawable/ic_icons8_facebook"
                 app:iconGravity="textStart"
-                app:iconSize="24dp"
-                app:iconTint="@null"
                 app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.MediumComponent" />
 
 

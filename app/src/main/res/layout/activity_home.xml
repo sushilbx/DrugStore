@@ -20,6 +20,13 @@
             app:menu="@menu/search_add"
             app:title="Home"
             app:titleTextColor="@color/white" />
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="Signup"
+            android:backgroundTint="@color/teal_700"/>
+
+
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/flHomeMain"
@@ -39,7 +46,6 @@
         android:id="@+id/llBottom"
         android:layout_width="match_parent"
         android:layout_height="57dp"
-        android:layout_alignParentBottom="true"
         android:background="@color/themeBlack"
         android:orientation="horizontal"
         android:visibility="gone">
