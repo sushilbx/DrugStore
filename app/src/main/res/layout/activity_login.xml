@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="40dp"
-                android:hint="Email"
+                android:hint="Mobile no."
                 app:boxBackgroundColor="@color/white"
                 app:boxBackgroundMode="outline"
                 app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.LargeComponent">
