@@ -1,13 +1,13 @@
 package com.ottego.drugstore;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -35,7 +35,7 @@ public class SignupActivity extends AppCompatActivity {
     String url = Utils.URL + "admin_signup";
     String enterfullname = "";
     String email = "";
-    String mobile ="";
+    String mobile = "";
     String password = "";
 
 
@@ -46,28 +46,80 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
+        fromXml();
 
-            tietSignupFullName = findViewById(R.id.tietSignupFullName);
-            tietSignupEmail = findViewById(R.id.tietSignupEmail);
-            tietSignupMob = findViewById(R.id.tietSignupMob);
-            tietSignupPassword=findViewById(R.id.tietLoginPassword);
-            mbSignupSubmit= findViewById(R.id.mbSignupSubmit);
+        sessionManager = new SessionManager(SignupActivity.this);
 
-
-            sessionManager = new SessionManager(SignupActivity.this);
-
-            mbSignupSubmit.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View view) {
-                    enterfullname = tietSignupFullName.getText().toString().trim();
-                    email = tietSignupEmail.getText().toString().trim();
-                    mobile = tietSignupMob.getText().toString().trim();
-                    password = tietSignupPassword.getText().toString().trim();
+        mbSignupSubmit.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                if (checkForm()) {
                     signup();
                 }
+            }
 
-            });
+        });
 
     }
+
+    private void fromXml() {
+        tietSignupFullName = findViewById(R.id.tietSignupFullName);
+        tietSignupEmail = findViewById(R.id.tietSignupEmail);
+        tietSignupMob = findViewById(R.id.tietSignupMob);
+        tietSignupPassword = findViewById(R.id.tietSignuppPassword);
+        mbSignupSubmit = findViewById(R.id.mbSignupSubmit);
+    }
+
+    boolean checkForm() {
+        enterfullname = tietSignupFullName.getText().toString().trim();
+        email = tietSignupEmail.getText().toString().trim();
+        mobile = tietSignupMob.getText().toString().trim();
+        password = tietSignupPassword.getText().toString().trim();
+
+        if (enterfullname.isEmpty()) {
+            tietSignupFullName.setError("Name is empty");
+            tietSignupFullName.requestFocus();
+            return false;
+        } else if (enterfullname.length() < 4) {
+            tietSignupFullName.setError("Name should be minimum 4 characters");
+            tietSignupFullName.requestFocus();
+            return false;
+        }
+
+        if (mobile.isEmpty()) {
+            Toast.makeText(this, "Enter mobile number", Toast.LENGTH_SHORT).show();
+            tietSignupMob.setFocusableInTouchMode(true);
+            tietSignupMob.requestFocus();
+            return false;
+        } else if (!Utils.myMobileValid(mobile)) {
+            Toast.makeText(this, "Invalid mobile number", Toast.LENGTH_SHORT).show();
+            tietSignupMob.setFocusableInTouchMode(true);
+            tietSignupMob.requestFocus();
+            return false;
+        }
+        if (email.isEmpty()) {
+            Toast.makeText(this, "Enter email", Toast.LENGTH_SHORT).show();
+            tietSignupEmail.setFocusableInTouchMode(true);
+            tietSignupEmail.requestFocus();
+            return false;
+        } else if (!Utils.myEmailValid(email)) {
+            Toast.makeText(this, "Invalid email", Toast.LENGTH_SHORT).show();
+            tietSignupEmail.setFocusableInTouchMode(true);
+            tietSignupEmail.requestFocus();
+            return false;
+        }
+        if (password.isEmpty()) {
+            tietSignupPassword.setError("Password is empty");
+            tietSignupPassword.requestFocus();
+            return false;
+        } else if (password.length() < 6) {
+            tietSignupPassword.setError("Password should be minimum 6 characters");
+            tietSignupPassword.requestFocus();
+            return false;
+        }
+
+        return true;
+    }
+
     void signup() {
         final ProgressDialog progressDialog = ProgressDialog.show(SignupActivity.this, null, "Processing...", false, false);
 
@@ -78,22 +130,12 @@ public class SignupActivity extends AppCompatActivity {
                 Log.e("response", response);
                 try {
                     JSONObject jsonObject = new JSONObject(response);
-                    String code = jsonObject.getString("status");
-                    if (code.equalsIgnoreCase("true")) {
+                    String status = jsonObject.getString("status");
+                    if (status.equalsIgnoreCase("true")) {
                         JSONObject jsonObj = new JSONObject(jsonObject.getString("data"));
 
-                        String id = jsonObj.getString("id");
-                        String name = jsonObj.getString("name");
-                        String mobile = jsonObj.getString("mobile");
-                        String email = jsonObj.getString("email");
-                        String gender = jsonObj.getString("gender");
-
                         Gson gson = new Gson();
-
-
                         SessionModel sessionModel = gson.fromJson(String.valueOf(jsonObj), SessionModel.class);
-
-
                         sessionManager.createLoginSession(sessionModel);
 
                         Intent intent = new Intent(SignupActivity.this, MainActivity.class);
@@ -123,8 +165,8 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("enterfullname", mobile);
-                params.put("email", mobile);
+                params.put("name", enterfullname);
+                params.put("email", email);
                 params.put("mobile", mobile);
                 params.put("password", password);
                 return params;
@@ -133,7 +175,6 @@ public class SignupActivity extends AppCompatActivity {
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(SignupActivity.this).myAddToRequest(stringRequest);
     }
-
 
 
 }
