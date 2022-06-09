@@ -86,7 +86,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="#FF018786"
-                app:icon="@drawable/ic_icons8_facebook"
+                app:icon="@drawable/ic_google"
                 android:text="Login with Google"
                 app:iconSize="24dp"
                 app:iconTint="@null"

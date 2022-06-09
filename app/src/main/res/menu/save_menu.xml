@@ -5,8 +5,7 @@
         android:id="@+id/menu_search_item"
         android:contentDescription="Save"
         android:icon="@drawable/ic_baseline_check_24"
-        android:title="Search"
-        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        android:title="Save"
         app:showAsAction="ifRoom|collapseActionView" />
 
 </menu>

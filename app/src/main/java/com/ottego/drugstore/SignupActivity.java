@@ -138,7 +138,7 @@ public class SignupActivity extends AppCompatActivity {
                         SessionModel sessionModel = gson.fromJson(String.valueOf(jsonObj), SessionModel.class);
                         sessionManager.createLoginSession(sessionModel);
 
-                        Intent intent = new Intent(SignupActivity.this, MainActivity.class);
+                        Intent intent = new Intent(SignupActivity.this, HomeActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
 

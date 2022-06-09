@@ -7,22 +7,26 @@
     android:orientation="vertical"
     tools:context=".ProfileActivity">
 
-   <com.google.android.material.appbar.MaterialToolbar
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       app:title="Edit Profile"
-       app:titleTextColor="@color/themeLightBlack"
-       app:navigationIcon="@drawable/ic_back"
-       app:menu="@menu/save_menu"
-       app:titleCentered="true"/>
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/mtProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/save_menu"
+        app:navigationIcon="@drawable/ic_back"
+        app:title="Edit Profile"
+        app:titleCentered="true"
+        app:titleTextColor="@color/themeLightBlack" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:padding="20dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:padding="20dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -32,6 +36,7 @@
                 <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -42,12 +47,13 @@
                             android:layout_height="100dp"
                             android:src="@mipmap/ic_headshot" />
                     </com.google.android.material.card.MaterialCardView>
+
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="end|bottom"
                         android:layout_marginEnd="5dp"
                         android:layout_marginBottom="5dp"
-                        android:layout_gravity="end|bottom"
                         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle">
 
                         <ImageView
@@ -62,11 +68,9 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginTop="30dp"
                 android:hint="Name"
                 app:boxBackgroundColor="@color/white"
-                app:boxBackgroundMode="outline"
                 app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.LargeComponent">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -82,7 +86,6 @@
                 android:layout_marginTop="15dp"
                 android:hint="Mobile no."
                 app:boxBackgroundColor="@color/white"
-                app:boxBackgroundMode="outline"
                 app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.LargeComponent">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -98,7 +101,6 @@
                 android:layout_marginTop="15dp"
                 android:hint="Email"
                 app:boxBackgroundColor="@color/white"
-                app:boxBackgroundMode="outline"
                 app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.LargeComponent">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -107,21 +109,53 @@
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <TextView
+                android:id="@+id/tvProfileDob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:padding="10dp"
+                android:text="dob" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Age"
+                android:layout_marginTop="15dp"
+                android:padding="10dp"
+                android:textStyle="bold"/>
+
+            <RadioGroup
+                android:id="@+id/radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Male" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Female" />
+            </RadioGroup>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/mbProfileSave"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:hint="Password"
-                app:boxBackgroundColor="@color/white"
-                app:boxBackgroundMode="outline"
-                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.LargeComponent">
+                android:layout_marginTop="40dp"
+                android:backgroundTint="#FF018786"
+                android:text="Save"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.MediumComponent" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietProfilePassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </com.google.android.material.textfield.TextInputLayout>
+
         </LinearLayout>
     </ScrollView>
+
 </LinearLayout>

@@ -13,6 +13,24 @@
         android:theme="@style/Theme.DrugStore"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".CartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BottomActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HospitalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProductListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RecyclerviewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ImageActivity"
+            android:exported="false" />
+        <activity
             android:name=".ProfileActivity"
             android:exported="false" />
         <activity
