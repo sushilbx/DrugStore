@@ -60,6 +60,12 @@
                 android:text="Product Price"
                 android:textColor="#43eb34"
                 android:textSize="13dp" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/mbRemoveCart"
+                android:layout_width="wrap_content"
+                android:text="Add to Cart"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 

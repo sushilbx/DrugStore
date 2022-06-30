@@ -1,6 +1,7 @@
 package com.ottego.drugstore;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,8 +37,8 @@ public class ProductListActivity extends AppCompatActivity {
         sessionManager = new SessionManager(this);
         recyclerView = findViewById(R.id.recyclerProductList);
 
-       recyclerView.setLayoutManager(new LinearLayoutManager(this));
-     //   recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL ));
+//       recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL ));
         getProduct();
     }
 
@@ -45,6 +46,7 @@ public class ProductListActivity extends AppCompatActivity {
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                Log.e("response", response);
                 Gson gson = new Gson();
 
                 GetProductModel productList = gson.fromJson(response, GetProductModel.class);

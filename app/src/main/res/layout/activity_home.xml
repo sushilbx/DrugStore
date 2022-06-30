@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".HomeActivity">
 
 
     <LinearLayout
@@ -22,28 +23,47 @@
             app:menu="@menu/search_add"
             app:title="Home"
             app:titleTextColor="@color/white" />
+
+
+
         <Button
-            android:id="@+id/SignUpButton"
+            android:id="@+id/mbSettingButton"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:text="Signup"
-            android:backgroundTint="@color/teal_700"/>
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floating_action_button"
+            android:backgroundTint="@color/teal_700"
+            android:text="Setting" />
+
+
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Search" />
+        <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            app:srcCompat="@drawable/ic_green_shopping_cart_10909"
-            android:backgroundTint="#03fcc2"/>
-
-
+            android:text="Load Google.com"
+            android:onClick="loadWebPage"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/rlFragmentContainer">
+        </RelativeLayout>
 
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/flHomeMain"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation"
@@ -54,4 +74,9 @@
     </LinearLayout>
 
 
-</RelativeLayout>
+
+
+
+
+
+</LinearLayout>

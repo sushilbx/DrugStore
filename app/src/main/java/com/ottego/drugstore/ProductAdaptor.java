@@ -1,6 +1,7 @@
 package com.ottego.drugstore;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +51,13 @@ public class ProductAdaptor extends RecyclerView.Adapter<ProductAdaptor.ViewHold
         holder.productDiscription.setText(arrayProduct.get(position).description);
         holder.productName.setText(arrayProduct.get(position).name);
         holder.productPrice.setText(arrayProduct.get(position).price);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(context,ProductDetailsActivity.class);
+                context.startActivity(intent);
+            }
+        });
 
     }
 

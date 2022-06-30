@@ -29,11 +29,12 @@ import java.util.Map;
 public class LoginActivity extends AppCompatActivity {
     TextInputEditText tietLoginEmail;
     TextInputEditText tietLoginPassword;
-    MaterialButton mbLoginSubmit;
+    MaterialButton mbLoginSubmit, mbCreateAccount;
     String url = Utils.URL + "admin_login";
     String mobile = "";
     String password = "";
     SessionManager sessionManager;
+    MaterialButton mbGmailLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,14 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
+        mbCreateAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -60,6 +69,8 @@ public class LoginActivity extends AppCompatActivity {
         tietLoginEmail = findViewById(R.id.tietLoginEmail);
         tietLoginPassword = findViewById(R.id.tietLoginPassword);
         mbLoginSubmit = findViewById(R.id.mbLoginSubmit);
+        mbCreateAccount = findViewById(R.id.mbCreateAccount);
+        mbGmailLogin = findViewById(R.id.mbGmailLogin);
     }
 
     boolean checkForm() {
@@ -146,4 +157,9 @@ public class LoginActivity extends AppCompatActivity {
         MySingleton.myGetMySingleton(LoginActivity.this).myAddToRequest(stringRequest);
     }
 
+    public void mbGmailLogin(View view) {
+        Intent intent = getPackageManager().getLaunchIntentForPackage("com.google.android.gm");
+        startActivity(intent);
+
+    }
 }
