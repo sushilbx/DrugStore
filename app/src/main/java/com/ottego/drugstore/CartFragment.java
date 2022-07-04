@@ -2,13 +2,16 @@ package com.ottego.drugstore;
 
 import android.content.Context;
 import android.os.Bundle;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -16,32 +19,32 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.google.android.material.button.MaterialButton;
+import com.google.gson.Gson;
+import com.ottego.drugstore.model.GetCartModel;
 
 import java.util.HashMap;
 import java.util.Map;
 
 
-public class RemoveCartFragment extends DialogFragment {
-    String url = "http://ottego.com/api/store/remove_cart";
-    Context context;
-    SessionManager sessionManager;
-    MaterialButton mbRemoveCart;
-
+public class CartFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+
     private String mParam1;
     private String mParam2;
+    String url = "http://ottego.com/api/store/get_cart";
+    RecyclerView recyclerView;
+    Context context;
+    SessionManager sessionManager;
 
-    public RemoveCartFragment() {
+    public CartFragment() {
 
     }
 
-
-    public static RemoveCartFragment newInstance(String param1, String param2) {
-        RemoveCartFragment fragment = new RemoveCartFragment();
+    public static CartFragment newInstance(String param1, String param2) {
+        CartFragment fragment = new CartFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,30 +64,31 @@ public class RemoveCartFragment extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_remove_cart, container, false);
-        context = getContext();
+        // Inflate the layout for this fragment
+        View view= inflater.inflate(R.layout.fragment_cart, container,false);
+                context = getContext();
         sessionManager = new SessionManager(context);
-        fromXml(view);
-        return view;
+        recyclerView = view.findViewById(R.id.rvCart);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        getcart();
+        return  view;
     }
 
-    private void fromXml(View view) {
-        mbRemoveCart = view.findViewById(R.id.mbRemoveCart);
-        mbRemoveCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                removeCart();
-                dismiss();
-            }
-        });
-    }
 
-    private void removeCart() {
+    public void getcart() {
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.e("response", response);
-                ((CartActivity)getContext()).getcart();
+                Log.e("sushil", response);
+
+                Gson gson = new Gson();
+
+                GetCartModel cartList = gson.fromJson(response, GetCartModel.class);
+                if (cartList.status) {
+
+                    CartAdapter adapter = new CartAdapter(context, cartList.data.products);
+                    recyclerView.setAdapter(adapter);
+                }
 
             }
         };
@@ -103,12 +107,11 @@ public class RemoveCartFragment extends DialogFragment {
                 Map<String, String> params = new HashMap<>();
                 params.put("api_key", sessionManager.getApiKey());
                 params.put("api_secret", sessionManager.getApiSecret());
-                params.put("id", mParam1);
-                Log.e("params", params.toString());
                 return params;
             }
         };
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(stringRequest);
     }
+
 }

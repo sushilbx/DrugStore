@@ -8,7 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -16,32 +18,32 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.google.android.material.button.MaterialButton;
+import com.google.gson.Gson;
+import com.ottego.drugstore.model.GetHospitalModel;
 
 import java.util.HashMap;
 import java.util.Map;
 
 
-public class RemoveCartFragment extends DialogFragment {
-    String url = "http://ottego.com/api/store/remove_cart";
-    Context context;
-    SessionManager sessionManager;
-    MaterialButton mbRemoveCart;
-
-
+public class HospitalFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
     private String mParam1;
     private String mParam2;
 
-    public RemoveCartFragment() {
+    String url = "http://ottego.com/api/store/hospital_list";
+    RecyclerView recyclerView;
+    Context context;
+    SessionManager sessionManager;
 
+    public HospitalFragment() {
+        // Required empty public constructor
     }
 
 
-    public static RemoveCartFragment newInstance(String param1, String param2) {
-        RemoveCartFragment fragment = new RemoveCartFragment();
+    public static HospitalFragment newInstance(String param1, String param2) {
+        HospitalFragment fragment = new HospitalFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,30 +63,33 @@ public class RemoveCartFragment extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_remove_cart, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_hospital, container, false);
+
         context = getContext();
         sessionManager = new SessionManager(context);
-        fromXml(view);
+        recyclerView = view.findViewById(R.id.rvHospital);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        getHospital();
+
+
         return view;
     }
 
-    private void fromXml(View view) {
-        mbRemoveCart = view.findViewById(R.id.mbRemoveCart);
-        mbRemoveCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                removeCart();
-                dismiss();
-            }
-        });
-    }
 
-    private void removeCart() {
+    private void getHospital() {
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.e("response", response);
-                ((CartActivity)getContext()).getcart();
+                Gson gson = new Gson();
+
+                GetHospitalModel hospitalList = gson.fromJson(response, GetHospitalModel.class);
+                if (hospitalList.status) {
+
+                    HospitalAdaptor adapter = new HospitalAdaptor(context, hospitalList.data);
+                    recyclerView.setAdapter(adapter);
+                }
 
             }
         };
@@ -103,8 +108,6 @@ public class RemoveCartFragment extends DialogFragment {
                 Map<String, String> params = new HashMap<>();
                 params.put("api_key", sessionManager.getApiKey());
                 params.put("api_secret", sessionManager.getApiSecret());
-                params.put("id", mParam1);
-                Log.e("params", params.toString());
                 return params;
             }
         };
