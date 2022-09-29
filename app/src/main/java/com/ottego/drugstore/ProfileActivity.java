@@ -43,8 +43,7 @@ public class ProfileActivity extends AppCompatActivity {
     Context context;
     SessionManager sessionManager;
 
-
-    TextInputEditText etName, etMobileNo, etEmail;
+    TextInputEditText etName,etMobileNo,etEmail;
     RadioGroup radioGroup;
     TextView tvProfileDob;
     String enterfullname = "";
